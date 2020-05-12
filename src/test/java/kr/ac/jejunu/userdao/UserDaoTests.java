@@ -12,8 +12,8 @@ public class UserDaoTests {
     @Test
     public void testGet() throws SQLException, ClassNotFoundException {
         Integer id = 1;
-        String name = "hulk";
-        String password = "1234";
+        String name = "type";
+        String password = "0000";
         UserDao userDao = new UserDao();
         User user = userDao.get(id);
         assertThat(user.getId(), is(id));
