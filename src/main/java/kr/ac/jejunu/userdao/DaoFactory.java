@@ -3,6 +3,7 @@ package kr.ac.jejunu.userdao;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
@@ -20,8 +21,12 @@ public class DaoFactory {
     private String password;
 
     @Bean
-    public JdbcContext jdbcContext(){
-        return new JdbcContext(dataSource());
+    UserDao userDao(){
+        return new UserDao(jdbcContext());
+    }
+    @Bean
+    public JdbcTemplate jdbcContext(){
+        return new JdbcTemplate(dataSource());
     }
     @Bean
     public DataSource dataSource(){
@@ -34,7 +39,6 @@ public class DaoFactory {
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-
 
     return dataSource;
     }
