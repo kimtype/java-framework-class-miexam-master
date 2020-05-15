@@ -48,11 +48,14 @@ public class JdbcContext {
         return user;
     }
 
-    void jdbcContextForInsert(User user, StatementStrategy statementStrategy) throws SQLException {
+    void jdbcContextForInsert( StatementStrategy statementStrategy) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+
+        User user = null;
         try {
+            user = new User();
             connection = dataSource.getConnection();
             preparedStatement = statementStrategy.makeStatement(connection);
             preparedStatement.executeUpdate();
