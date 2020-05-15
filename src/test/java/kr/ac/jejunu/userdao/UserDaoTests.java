@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import java.sql.SQLException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,8 +16,6 @@ public class UserDaoTests {
     String name = "type";
     String password = "0000";
 
-
-
     @BeforeAll
     public static void setup(){
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
@@ -27,7 +24,7 @@ public class UserDaoTests {
 
 
     @Test
-    public void get() throws SQLException, ClassNotFoundException {
+    public void get() throws SQLException{
         Integer id = 1;
 
         User user = userDao.get(id);
